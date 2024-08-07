@@ -3,12 +3,10 @@ package com.corz.chat.controller;
 import com.corz.chat.common.Result;
 import com.corz.chat.config.CozeHeader;
 import com.corz.chat.response.ConversationObject;
+import com.corz.chat.response.MessageObject;
 import com.corz.chat.service.CozeApiService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -31,8 +29,19 @@ public class CozeApiController {
         return "ok";
     }
 
+    @GetMapping("/conversation/retrieve")
+    public Result<ConversationObject> retrieveConversation(@RequestParam("conversationId") String conversationId){
+        return cozeApiService.retrieveConversation(conversationId);
+    }
+
     @PostMapping("/conversation/create")
     public Result<ConversationObject> createConversation(){
         return cozeApiService.createConversation();
+    }
+
+    @PostMapping("/message/create")
+    public Result<MessageObject> createMessage(@RequestParam("conversationId") String conversationId,
+                                               @RequestBody String content){
+        return cozeApiService.createMessage(conversationId, content);
     }
 }

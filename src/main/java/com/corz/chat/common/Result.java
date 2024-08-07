@@ -3,9 +3,11 @@ package com.corz.chat.common;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder
-public class Result<T> {
+public class Result<T> implements Serializable {
     /** 状态码 */
     private Integer code;
     /** 响应数据 */
