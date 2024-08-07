@@ -1,0 +1,8 @@
+server:
+  port: 10001
+
+# coze info
+coze:
+  header:
+    Authorization: Bearer pat_cN7uUe7CDUGL5Gn4ito1zOVUScO60cv6nQk5IOEUwyUTysbNFxpsQ4gzjYppnpEp
+    ContentType: application/json
